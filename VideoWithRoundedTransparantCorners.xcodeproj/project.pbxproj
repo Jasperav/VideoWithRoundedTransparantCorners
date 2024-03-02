@@ -1,0 +1,594 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		69E103972B934D1B004354AF /* VideoWithRoundedTransparantCornersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E103962B934D1B004354AF /* VideoWithRoundedTransparantCornersApp.swift */; };
+		69E103992B934D1B004354AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E103982B934D1B004354AF /* ContentView.swift */; };
+		69E1039B2B934D1C004354AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69E1039A2B934D1C004354AF /* Assets.xcassets */; };
+		69E1039E2B934D1C004354AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69E1039D2B934D1C004354AF /* Preview Assets.xcassets */; };
+		69E103A92B934D1D004354AF /* VideoWithRoundedTransparantCornersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E103A82B934D1D004354AF /* VideoWithRoundedTransparantCornersTests.swift */; };
+		69E103B32B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E103B22B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests.swift */; };
+		69E103B52B934D1D004354AF /* VideoWithRoundedTransparantCornersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E103B42B934D1D004354AF /* VideoWithRoundedTransparantCornersUITestsLaunchTests.swift */; };
+		69E103C22B934D3A004354AF /* VideoEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E103C12B934D3A004354AF /* VideoEditor.swift */; };
+		69E103C42B934D49004354AF /* a.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 69E103C32B934D49004354AF /* a.mp4 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		69E103A52B934D1D004354AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69E1038B2B934D1B004354AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69E103922B934D1B004354AF;
+			remoteInfo = VideoWithRoundedTransparantCorners;
+		};
+		69E103AF2B934D1D004354AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69E1038B2B934D1B004354AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69E103922B934D1B004354AF;
+			remoteInfo = VideoWithRoundedTransparantCorners;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		69E103932B934D1B004354AF /* VideoWithRoundedTransparantCorners.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoWithRoundedTransparantCorners.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69E103962B934D1B004354AF /* VideoWithRoundedTransparantCornersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWithRoundedTransparantCornersApp.swift; sourceTree = "<group>"; };
+		69E103982B934D1B004354AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		69E1039A2B934D1C004354AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		69E1039D2B934D1C004354AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		69E1039F2B934D1C004354AF /* VideoWithRoundedTransparantCorners.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoWithRoundedTransparantCorners.entitlements; sourceTree = "<group>"; };
+		69E103A42B934D1D004354AF /* VideoWithRoundedTransparantCornersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoWithRoundedTransparantCornersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		69E103A82B934D1D004354AF /* VideoWithRoundedTransparantCornersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWithRoundedTransparantCornersTests.swift; sourceTree = "<group>"; };
+		69E103AE2B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoWithRoundedTransparantCornersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		69E103B22B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWithRoundedTransparantCornersUITests.swift; sourceTree = "<group>"; };
+		69E103B42B934D1D004354AF /* VideoWithRoundedTransparantCornersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWithRoundedTransparantCornersUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		69E103C12B934D3A004354AF /* VideoEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditor.swift; sourceTree = "<group>"; };
+		69E103C32B934D49004354AF /* a.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = a.mp4; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		69E103902B934D1B004354AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69E103A12B934D1D004354AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69E103AB2B934D1D004354AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		69E1038A2B934D1B004354AF = {
+			isa = PBXGroup;
+			children = (
+				69E103952B934D1B004354AF /* VideoWithRoundedTransparantCorners */,
+				69E103A72B934D1D004354AF /* VideoWithRoundedTransparantCornersTests */,
+				69E103B12B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests */,
+				69E103942B934D1B004354AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		69E103942B934D1B004354AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69E103932B934D1B004354AF /* VideoWithRoundedTransparantCorners.app */,
+				69E103A42B934D1D004354AF /* VideoWithRoundedTransparantCornersTests.xctest */,
+				69E103AE2B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69E103952B934D1B004354AF /* VideoWithRoundedTransparantCorners */ = {
+			isa = PBXGroup;
+			children = (
+				69E103962B934D1B004354AF /* VideoWithRoundedTransparantCornersApp.swift */,
+				69E103982B934D1B004354AF /* ContentView.swift */,
+				69E1039A2B934D1C004354AF /* Assets.xcassets */,
+				69E1039F2B934D1C004354AF /* VideoWithRoundedTransparantCorners.entitlements */,
+				69E1039C2B934D1C004354AF /* Preview Content */,
+			);
+			path = VideoWithRoundedTransparantCorners;
+			sourceTree = "<group>";
+		};
+		69E1039C2B934D1C004354AF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				69E1039D2B934D1C004354AF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		69E103A72B934D1D004354AF /* VideoWithRoundedTransparantCornersTests */ = {
+			isa = PBXGroup;
+			children = (
+				69E103C32B934D49004354AF /* a.mp4 */,
+				69E103A82B934D1D004354AF /* VideoWithRoundedTransparantCornersTests.swift */,
+				69E103C12B934D3A004354AF /* VideoEditor.swift */,
+			);
+			path = VideoWithRoundedTransparantCornersTests;
+			sourceTree = "<group>";
+		};
+		69E103B12B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests */ = {
+			isa = PBXGroup;
+			children = (
+				69E103B22B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests.swift */,
+				69E103B42B934D1D004354AF /* VideoWithRoundedTransparantCornersUITestsLaunchTests.swift */,
+			);
+			path = VideoWithRoundedTransparantCornersUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		69E103922B934D1B004354AF /* VideoWithRoundedTransparantCorners */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69E103B82B934D1D004354AF /* Build configuration list for PBXNativeTarget "VideoWithRoundedTransparantCorners" */;
+			buildPhases = (
+				69E1038F2B934D1B004354AF /* Sources */,
+				69E103902B934D1B004354AF /* Frameworks */,
+				69E103912B934D1B004354AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VideoWithRoundedTransparantCorners;
+			productName = VideoWithRoundedTransparantCorners;
+			productReference = 69E103932B934D1B004354AF /* VideoWithRoundedTransparantCorners.app */;
+			productType = "com.apple.product-type.application";
+		};
+		69E103A32B934D1D004354AF /* VideoWithRoundedTransparantCornersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69E103BB2B934D1D004354AF /* Build configuration list for PBXNativeTarget "VideoWithRoundedTransparantCornersTests" */;
+			buildPhases = (
+				69E103A02B934D1D004354AF /* Sources */,
+				69E103A12B934D1D004354AF /* Frameworks */,
+				69E103A22B934D1D004354AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				69E103A62B934D1D004354AF /* PBXTargetDependency */,
+			);
+			name = VideoWithRoundedTransparantCornersTests;
+			productName = VideoWithRoundedTransparantCornersTests;
+			productReference = 69E103A42B934D1D004354AF /* VideoWithRoundedTransparantCornersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		69E103AD2B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69E103BE2B934D1D004354AF /* Build configuration list for PBXNativeTarget "VideoWithRoundedTransparantCornersUITests" */;
+			buildPhases = (
+				69E103AA2B934D1D004354AF /* Sources */,
+				69E103AB2B934D1D004354AF /* Frameworks */,
+				69E103AC2B934D1D004354AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				69E103B02B934D1D004354AF /* PBXTargetDependency */,
+			);
+			name = VideoWithRoundedTransparantCornersUITests;
+			productName = VideoWithRoundedTransparantCornersUITests;
+			productReference = 69E103AE2B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		69E1038B2B934D1B004354AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					69E103922B934D1B004354AF = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					69E103A32B934D1D004354AF = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 69E103922B934D1B004354AF;
+					};
+					69E103AD2B934D1D004354AF = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 69E103922B934D1B004354AF;
+					};
+				};
+			};
+			buildConfigurationList = 69E1038E2B934D1B004354AF /* Build configuration list for PBXProject "VideoWithRoundedTransparantCorners" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 69E1038A2B934D1B004354AF;
+			productRefGroup = 69E103942B934D1B004354AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				69E103922B934D1B004354AF /* VideoWithRoundedTransparantCorners */,
+				69E103A32B934D1D004354AF /* VideoWithRoundedTransparantCornersTests */,
+				69E103AD2B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		69E103912B934D1B004354AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69E1039E2B934D1C004354AF /* Preview Assets.xcassets in Resources */,
+				69E1039B2B934D1C004354AF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69E103A22B934D1D004354AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69E103C42B934D49004354AF /* a.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69E103AC2B934D1D004354AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		69E1038F2B934D1B004354AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69E103992B934D1B004354AF /* ContentView.swift in Sources */,
+				69E103972B934D1B004354AF /* VideoWithRoundedTransparantCornersApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69E103A02B934D1D004354AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69E103C22B934D3A004354AF /* VideoEditor.swift in Sources */,
+				69E103A92B934D1D004354AF /* VideoWithRoundedTransparantCornersTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69E103AA2B934D1D004354AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69E103B52B934D1D004354AF /* VideoWithRoundedTransparantCornersUITestsLaunchTests.swift in Sources */,
+				69E103B32B934D1D004354AF /* VideoWithRoundedTransparantCornersUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		69E103A62B934D1D004354AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 69E103922B934D1B004354AF /* VideoWithRoundedTransparantCorners */;
+			targetProxy = 69E103A52B934D1D004354AF /* PBXContainerItemProxy */;
+		};
+		69E103B02B934D1D004354AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 69E103922B934D1B004354AF /* VideoWithRoundedTransparantCorners */;
+			targetProxy = 69E103AF2B934D1D004354AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		69E103B62B934D1D004354AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		69E103B72B934D1D004354AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		69E103B92B934D1D004354AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VideoWithRoundedTransparantCorners/VideoWithRoundedTransparantCorners.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VideoWithRoundedTransparantCorners/Preview Content\"";
+				DEVELOPMENT_TEAM = N4EV3W64CV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.framifydevice.VideoWithRoundedTransparantCorners;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		69E103BA2B934D1D004354AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VideoWithRoundedTransparantCorners/VideoWithRoundedTransparantCorners.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VideoWithRoundedTransparantCorners/Preview Content\"";
+				DEVELOPMENT_TEAM = N4EV3W64CV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.framifydevice.VideoWithRoundedTransparantCorners;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		69E103BC2B934D1D004354AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4EV3W64CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.framifydevice.VideoWithRoundedTransparantCornersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoWithRoundedTransparantCorners.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VideoWithRoundedTransparantCorners";
+			};
+			name = Debug;
+		};
+		69E103BD2B934D1D004354AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4EV3W64CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.framifydevice.VideoWithRoundedTransparantCornersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoWithRoundedTransparantCorners.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VideoWithRoundedTransparantCorners";
+			};
+			name = Release;
+		};
+		69E103BF2B934D1D004354AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4EV3W64CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.framifydevice.VideoWithRoundedTransparantCornersUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = VideoWithRoundedTransparantCorners;
+			};
+			name = Debug;
+		};
+		69E103C02B934D1D004354AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4EV3W64CV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.framifydevice.VideoWithRoundedTransparantCornersUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = VideoWithRoundedTransparantCorners;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		69E1038E2B934D1B004354AF /* Build configuration list for PBXProject "VideoWithRoundedTransparantCorners" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69E103B62B934D1D004354AF /* Debug */,
+				69E103B72B934D1D004354AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69E103B82B934D1D004354AF /* Build configuration list for PBXNativeTarget "VideoWithRoundedTransparantCorners" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69E103B92B934D1D004354AF /* Debug */,
+				69E103BA2B934D1D004354AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69E103BB2B934D1D004354AF /* Build configuration list for PBXNativeTarget "VideoWithRoundedTransparantCornersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69E103BC2B934D1D004354AF /* Debug */,
+				69E103BD2B934D1D004354AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69E103BE2B934D1D004354AF /* Build configuration list for PBXNativeTarget "VideoWithRoundedTransparantCornersUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69E103BF2B934D1D004354AF /* Debug */,
+				69E103C02B934D1D004354AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 69E1038B2B934D1B004354AF /* Project object */;
+}
