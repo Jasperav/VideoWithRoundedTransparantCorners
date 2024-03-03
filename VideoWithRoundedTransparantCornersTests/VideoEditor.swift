@@ -336,22 +336,24 @@ class VideoEditor {
         extract.layerInstruction.setTransform(finalTransform, at: CMTime.zero)
 
         if let cornerRadius {
+            let shapeLayer = CAShapeLayer()
+
+            shapeLayer.frame = CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height)
+            shapeLayer.path = NSBezierPath(roundedRect: CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height), xRadius: cornerRadius, yRadius: cornerRadius).cgPath
+            shapeLayer.fillColor = .clear
+            shapeLayer.strokeColor = .black
+
+            let parentLayer = CALayer()
             let videoLayer = CALayer()
 
-            videoLayer.frame = CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height)
-            videoLayer.backgroundColor = .clear
+            parentLayer.frame = CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height)
+            videoLayer.frame = parentLayer.bounds
+            parentLayer.addSublayer(videoLayer)
+            parentLayer.addSublayer(shapeLayer)
 
-            let maskLayer = CALayer()
+            let animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer)
 
-            maskLayer.frame = videoLayer.bounds
-            maskLayer.cornerRadius = cornerRadius
-            maskLayer.masksToBounds = true
-            maskLayer.borderWidth = CGFloat.greatestFiniteMagnitude
-            maskLayer.backgroundColor = .clear
-
-            videoLayer.mask = maskLayer
-
-            extract.videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: videoLayer)
+            extract.videoComposition.animationTool = animationTool
         }
 
         if isCutBlackEdge, isKeepAspectRatio {
