@@ -1,22 +1,42 @@
+import AppKit
 import AVFoundation
 import Foundation
 import Photos
-import AppKit
 import QuartzCore
 import OSLog
 
 let logger = Logger()
 
 class VideoEditor {
+    struct Resize {
+        let size: CGSize
+        let cornerRadius: CGFloat?
+    }
+
+    struct AddDeviceFrame {
+        let cgImage: CGImage
+    }
+
+    enum Operation {
+        case resize(Resize)
+        case addDeviceFrame(AddDeviceFrame)
+    }
+
     func export(
         url: URL,
         outputDir: URL,
-        size: CGSize
+        operation: Operation
     ) async -> String? {
         do {
-            let (asset, video) = try await resizeVideo(videoAsset: AVURLAsset(url: url), targetSize: size, isKeepAspectRatio: false, isCutBlackEdge: false)
-            
-            try await exportVideo(outputPath: outputDir, asset: asset, videoComposition: video)
+            let asset = AVURLAsset(url: url)
+            let extract = switch operation {
+            case let .resize(resize):
+                try await resizeVideo(videoAsset: asset, targetSize: resize.size, isKeepAspectRatio: false, isCutBlackEdge: false, cornerRadius: resize.cornerRadius)
+            case let .addDeviceFrame(addDeviceFrame):
+                try await addImageForVideo(videoAsset: asset, image: addDeviceFrame.cgImage)
+            }
+
+            try await exportVideo(outputPath: outputDir, asset: extract.composition, videoComposition: extract.videoComposition)
 
             return nil
         } catch let error as YGCVideoError {
@@ -37,7 +57,7 @@ class VideoEditor {
                 return NSLocalizedString("video_error_no_dir", comment: "")
             case .noExportSession:
                 return NSLocalizedString("video_error_no_export_session", comment: "")
-                case .exporterError(let exporterError):
+            case let .exporterError(exporterError):
                 return String.localizedStringWithFormat(NSLocalizedString("video_error_exporter_error", comment: ""), exporterError)
             }
         } catch {
@@ -190,26 +210,32 @@ class VideoEditor {
         }
     }
 
-    private func resizeVideo(videoAsset: AVURLAsset,
-                             targetSize: CGSize,
-                             isKeepAspectRatio: Bool,
-                             isCutBlackEdge: Bool) async throws -> (AVMutableComposition, AVMutableVideoComposition)
-    {
+    private struct Extract {
+        let composition: AVMutableComposition
+        let videoTrack: AVAssetTrack
+        let duration: CMTime
+        let naturalSize: CGSize
+        let preferredTransform: CGAffineTransform
+        let mainInstruction: AVMutableVideoCompositionInstruction
+        let layerInstruction: AVMutableVideoCompositionLayerInstruction
+        let videoComposition: AVMutableVideoComposition
+    }
+
+    private func extractData(videoAsset: AVURLAsset) async throws -> Extract {
         guard let videoTrack = try await videoAsset.loadTracks(withMediaType: .video).first else {
             throw YGCVideoError.videoTrackNotFind
         }
-
 
         guard let audioTrack = try await videoAsset.loadTracks(withMediaType: .audio).first else {
             throw YGCVideoError.audioTrackNotFind
         }
 
-        let resizeComposition = AVMutableComposition(urlAssetInitializationOptions: nil)
+        let composition = AVMutableComposition(urlAssetInitializationOptions: nil)
 
-        guard let compositionVideoTrack = resizeComposition.addMutableTrack(withMediaType: AVMediaType.video, preferredTrackID: videoTrack.trackID) else {
+        guard let compositionVideoTrack = composition.addMutableTrack(withMediaType: AVMediaType.video, preferredTrackID: videoTrack.trackID) else {
             throw YGCVideoError.compositionTrackInitFailed
         }
-        guard let compostiionAudioTrack = resizeComposition.addMutableTrack(withMediaType: AVMediaType.audio, preferredTrackID: audioTrack.trackID) else {
+        guard let compostiionAudioTrack = composition.addMutableTrack(withMediaType: AVMediaType.audio, preferredTrackID: audioTrack.trackID) else {
             throw YGCVideoError.compositionTrackInitFailed
         }
 
@@ -217,14 +243,69 @@ class VideoEditor {
 
         try compositionVideoTrack.insertTimeRange(CMTimeRangeMake(start: CMTime.zero, duration: duration), of: videoTrack, at: CMTime.zero)
         try compostiionAudioTrack.insertTimeRange(CMTimeRangeMake(start: CMTime.zero, duration: duration), of: audioTrack, at: CMTime.zero)
-
-        let originTransform = try await videoTrack.load(.preferredTransform)
-        let info = orientationFromTransform(transform: originTransform)
         let naturalSize = try await videoTrack.load(.naturalSize)
+        let preferredTransform = try await videoTrack.load(.preferredTransform)
+        let mainInstruction = AVMutableVideoCompositionInstruction()
+
+        mainInstruction.timeRange = CMTimeRange(start: CMTime.zero, end: duration)
+
+        let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
+        let videoComposition = AVMutableVideoComposition()
+
+        videoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
+
+        mainInstruction.layerInstructions = [layerInstruction]
+        videoComposition.instructions = [mainInstruction]
+
+        return .init(composition: composition, videoTrack: videoTrack, duration: duration, naturalSize: naturalSize, preferredTransform: preferredTransform, mainInstruction: mainInstruction, layerInstruction: layerInstruction, videoComposition: videoComposition)
+    }
+
+    private func addImageForVideo(
+        videoAsset: AVURLAsset,
+        image: CGImage
+    ) async throws -> Extract {
+        let extract = try await extractData(videoAsset: videoAsset)
+
+        extract.layerInstruction.setTransform(extract.preferredTransform, at: CMTime.zero)
+
+        let imageLayer = CALayer()
+
+        imageLayer.contents = image
+        imageLayer.frame = CGRect(x: 0, y: 0, width: image.width, height: image.height)
+
+        let overlayLayer = CALayer()
+
+        overlayLayer.frame = CGRect(origin: CGPoint.zero, size: extract.naturalSize)
+        overlayLayer.addSublayer(imageLayer)
+
+        let parentLayer = CALayer()
+        let videoLayer = CALayer()
+
+        parentLayer.frame = CGRect(origin: CGPoint.zero, size: extract.naturalSize)
+        videoLayer.frame = CGRect(origin: CGPoint.zero, size: extract.naturalSize)
+
+        parentLayer.addSublayer(videoLayer)
+        parentLayer.addSublayer(overlayLayer)
+
+        extract.videoComposition.renderSize = extract.naturalSize
+        extract.videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: parentLayer)
+
+        return extract
+    }
+
+    private func resizeVideo(
+        videoAsset: AVURLAsset,
+        targetSize: CGSize,
+        isKeepAspectRatio: Bool,
+        isCutBlackEdge: Bool,
+        cornerRadius: CGFloat?
+    ) async throws -> Extract {
+        let extract = try await extractData(videoAsset: videoAsset)
+        let info = orientationFromTransform(transform: extract.preferredTransform)
         let videoNaturaSize: CGSize = if info.isPortrait, info.orientation != .up {
-            CGSize(width: naturalSize.height, height: naturalSize.width)
+            CGSize(width: extract.naturalSize.height, height: extract.naturalSize.width)
         } else {
-            naturalSize
+            extract.naturalSize
         }
 
         if videoNaturaSize.width < targetSize.width, videoNaturaSize.height < targetSize.height {
@@ -237,58 +318,48 @@ class VideoEditor {
             CGRect(origin: CGPoint.zero, size: targetSize)
         }
 
-        let mainInstruction = AVMutableVideoCompositionInstruction()
-
-        mainInstruction.timeRange = CMTimeRange(start: CMTime.zero, end: duration)
-
-        let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
-
         let finalTransform: CGAffineTransform = if info.isPortrait {
             if isCutBlackEdge {
-                originTransform.concatenating(CGAffineTransform(scaleX: fitRect.width / videoNaturaSize.width, y: fitRect.height / videoNaturaSize.height))
+                extract.preferredTransform.concatenating(CGAffineTransform(scaleX: fitRect.width / videoNaturaSize.width, y: fitRect.height / videoNaturaSize.height))
             } else {
-                originTransform.concatenating(CGAffineTransform(scaleX: fitRect.width / videoNaturaSize.width, y: fitRect.height / videoNaturaSize.height)).concatenating(CGAffineTransform(translationX: fitRect.minX, y: fitRect.minY))
+                extract.preferredTransform.concatenating(CGAffineTransform(scaleX: fitRect.width / videoNaturaSize.width, y: fitRect.height / videoNaturaSize.height)).concatenating(CGAffineTransform(translationX: fitRect.minX, y: fitRect.minY))
             }
 
         } else {
             if isCutBlackEdge {
-                originTransform.concatenating(CGAffineTransform(scaleX: fitRect.width / videoNaturaSize.width, y: fitRect.height / videoNaturaSize.height))
+                extract.preferredTransform.concatenating(CGAffineTransform(scaleX: fitRect.width / videoNaturaSize.width, y: fitRect.height / videoNaturaSize.height))
             } else {
-                originTransform.concatenating(CGAffineTransform(scaleX: fitRect.width / videoNaturaSize.width, y: fitRect.height / videoNaturaSize.height)).concatenating(CGAffineTransform(translationX: fitRect.minX, y: fitRect.minY))
+                extract.preferredTransform.concatenating(CGAffineTransform(scaleX: fitRect.width / videoNaturaSize.width, y: fitRect.height / videoNaturaSize.height)).concatenating(CGAffineTransform(translationX: fitRect.minX, y: fitRect.minY))
             }
         }
-        layerInstruction.setTransform(finalTransform, at: CMTime.zero)
-        mainInstruction.layerInstructions = [layerInstruction]
 
-        let videoComposition = AVMutableVideoComposition()
-        
-        videoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
-        
-        let videoLayer = CALayer()
-        
-        videoLayer.frame = CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height)
-        videoLayer.backgroundColor = .clear
-        
-        let maskLayer = CALayer()
-        
-        maskLayer.frame = videoLayer.bounds
-        maskLayer.cornerRadius = 100
-        maskLayer.masksToBounds = true
-        maskLayer.borderWidth = 50
-        maskLayer.backgroundColor = .clear
+        extract.layerInstruction.setTransform(finalTransform, at: CMTime.zero)
 
-        videoLayer.mask = maskLayer
-        
-        videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: videoLayer)
-        
-        if isCutBlackEdge, isKeepAspectRatio {
-            videoComposition.renderSize = fitRect.size
-        } else {
-            videoComposition.renderSize = targetSize
+        if let cornerRadius {
+            let videoLayer = CALayer()
+
+            videoLayer.frame = CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height)
+            videoLayer.backgroundColor = .clear
+
+            let maskLayer = CALayer()
+
+            maskLayer.frame = videoLayer.bounds
+            maskLayer.cornerRadius = cornerRadius
+            maskLayer.masksToBounds = true
+            maskLayer.borderWidth = CGFloat.greatestFiniteMagnitude
+            maskLayer.backgroundColor = .clear
+
+            videoLayer.mask = maskLayer
+
+            extract.videoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: videoLayer)
         }
 
-        videoComposition.instructions = [mainInstruction]
+        if isCutBlackEdge, isKeepAspectRatio {
+            extract.videoComposition.renderSize = fitRect.size
+        } else {
+            extract.videoComposition.renderSize = targetSize
+        }
 
-        return (resizeComposition, videoComposition)
+        return extract
     }
 }

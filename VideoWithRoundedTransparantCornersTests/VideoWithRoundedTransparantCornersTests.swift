@@ -4,7 +4,7 @@ import XCTest
 final class VideoWithRoundedTransparantCornersTests: XCTestCase {
     func testExample() async throws {
         let video = Bundle(for: VideoWithRoundedTransparantCornersTests.self).url(forResource: "a", withExtension: ".mp4")!
-        let error = await VideoEditor().export(url: video, outputDir: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appending(path: "temp.mov"), size: .init(width: 1000, height: 1000))
+        let error = await VideoEditor().export(url: video, outputDir: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appending(path: "temp.mov"), operation: .resize(.init(size: .init(width: 1000, height: 1000), cornerRadius: 100)))
 
         XCTAssertNil(error)
     }
